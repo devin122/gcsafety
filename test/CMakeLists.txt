@@ -5,10 +5,10 @@ configure_lit_site_cfg(
   ${CMAKE_CURRENT_SOURCE_DIR}/lit.cfg.py
 )
 
- set(LLVM_EXTERNAL_LIT "${CMAKE_SOURCE_DIR}/extern/lit/lit.py")
+ set(LLVM_EXTERNAL_LIT "${CMAKE_SOURCE_DIR}/extern/lit/lit.py" CACHE INTERNAL "")
 
 add_lit_testsuite(check-gcsafety "Running the Clang extra tools' regression tests"
   ${CMAKE_CURRENT_BINARY_DIR}
-  DEPENDS not
+  DEPENDS not FileCheck
   ARGS ${CLANG_TOOLS_TEST_EXTRA_ARGS}
 )
